@@ -1,84 +1,80 @@
 package judge
 
 import (
-	"bytes"
+	"base"
 	"fmt"
-	"io/ioutil"
-	"os"
-	"strings"
 )
 
-func judgePE(inFileName string, outFileName string, userFileName string) int {
-	f1, err := os.Open(outFileName)
-	if err != nil {
-		fmt.Println("read file fail", err)
-		return 0
-	}
-	defer f1.Close()
-
-	fd1, err := ioutil.ReadAll(f1)
-	if err != nil {
-		fmt.Println("read to fd fail", err)
-		return 0
-	}
-	str1 := string(fd1)
-
-	f2, err := os.Open(userFileName)
-	if err != nil {
-		fmt.Println("read file fail", err)
-		return 0
-	}
-	defer f2.Close()
-
-	fd2, err := ioutil.ReadAll(f2)
-	if err != nil {
-		fmt.Println("read to fd fail", err)
-		return 0
-	}
-	str2 := string(fd2)
-
-	if !bytes.Equal(fd1, fd2) {
-		str1 = strings.Replace(str1, " ", "", -1)
-		str1 = strings.Replace(str1, "\r\n", "", -1)
-
-		str2 = strings.Replace(str2, " ", "", -1)
-		str2 = strings.Replace(str2, "\r\n", "", -1)
-
-		if strings.EqualFold(str1, str2) {
-			return 1
-		}
-	}
-	return 0
+type Judger struct {
+	initer Initer
+	compiler Compiler
+	runner Runner
+	comparer Comparer
 }
 
-func judgeWA(inFileName string, outFileName string, userFileName string) int {
-	f1, err := os.Open(outFileName)
-	if err != nil {
-		fmt.Println("read file fail", err)
-		return 0
+func (judger *Judger)Run(timeLimit int64, memoryLimit int64, problemType int64) (result base.Result) {
+	//init
+	initResult := judger.initer.Init()
+	if initResult != base.Normal {
+		result.Result = initResult
+		return
 	}
-	defer f1.Close()
+	fmt.Println("init Success")
+	//compile
+	compileResult := judger.compiler.Compile()
+	if compileResult.compileResult == base.SystemError {
+		result.Result = compileResult.compileResult
+		return
+	}else if compileResult.compileResult == base.CompilationError {
+		result.Result = compileResult.compileResult
+		result.CompileErrorInf = compileResult.compileErrorInf
+		return
+	}
+	fmt.Println("compile Success")
+	limit := ResourcesLimit{}
+	limit.memoryLimit = memoryLimit
+	limit.timeLimit = timeLimit
+	limit.problemType = problemType
+	//run
+	runResult := judger.runner.Run(limit)
+	result.FileName = make(map[string]int64)
 
-	fd1, err := ioutil.ReadAll(f1)
-	if err != nil {
-		fmt.Println("read to fd fail", err)
-		return 0
+	result.TimeUsed = runResult.timeUsed
+	result.MemoryUsed = runResult.memoryUsed
+	result.FileName = runResult.fileName
+	if runResult.runResult != base.Accepted && runResult.runResult < base.Score{
+		result.Result = runResult.runResult
+		return
 	}
+	fmt.Println("run Success")
 
-	f2, err := os.Open(userFileName)
-	if err != nil {
-		fmt.Println("read file fail", err)
-		return 0
+	//compare
+	compareResult := judger.comparer.Compare(limit)
+	result.Result = compareResult.compareResult
+	if problemType == base.SPJ {
+		result.FileName = compareResult.fileName
+	} else if problemType == base.Referee {
+		result.TimeUsed = compareResult.timeUsed
+		result.MemoryUsed = compareResult.memoryUsed
 	}
-	defer f2.Close()
-	fd2, err := ioutil.ReadAll(f2)
-	if err != nil {
-		fmt.Println("read to fd fail", err)
-		return 0
-	}
+	fmt.Println("compare Success")
+	return
+}
 
-	if !bytes.Equal(fd1, fd2) {
-		return 1
+func CreateJudger(submit base.Submit) *Judger{
+	factory := NewFactory()
+	judger := &Judger{}
+	judger.initer = factory.CreateIniter(submit); if judger.initer == nil{
+		return nil
 	}
-	return 0
+	judger.compiler = factory.CreateCompiler(submit); if judger.compiler == nil{
+		return nil
+	}
+	judger.runner = factory.CreateRunner(submit); if judger.runner == nil{
+		return nil
+	}
+	judger.comparer = factory.CreateComparer(submit); if judger.comparer == nil{
+		return nil
+	}
+	return judger
 }

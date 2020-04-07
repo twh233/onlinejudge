@@ -13,7 +13,7 @@ import (
 	"time"
 )
 
-type RunResult struct{
+type RunResult struct {
 	runResult int64
 	timeUsed int64
 	memoryUsed int64
@@ -21,12 +21,23 @@ type RunResult struct{
 	fileName map[string] int64
 }
 
-type ResourcesLimit struct{
+type ResourcesLimit struct {
 	timeLimit int64
 	memoryLimit int64
 	problemType int64
 }
 
+type Runner interface {
+	Run(limit ResourcesLimit) RunResult
+}
+
+type DoNothing struct {
+
+}
+func (dn *DoNothing)Run(limit ResourcesLimit) (rr RunResult) {
+	rr.runResult = base.Accepted
+	return
+}
 
 func (c *C)Run(limit ResourcesLimit) RunResult {
 	return RunAdapter(base.C, c.codeDir, c.dataDir, "Main", ".in", ".user", limit)
