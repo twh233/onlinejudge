@@ -2,6 +2,7 @@ package base
 
 import (
 	"bufio"
+	"fmt"
 	"io"
 	"io/ioutil"
 	"os"
@@ -47,17 +48,21 @@ func PathExists(path string) (bool, error) {
 
 
 func ReadCodeFromFile(dir string) string {
+	fmt.Println("ReadCode path: " + dir)
 	file, _ := os.Open(dir)
 	defer file.Close()
 	reader := bufio.NewReader(file)
 	var code string
 
 	for {
-		str,err := reader.ReadString('\n')
+		str, err := reader.ReadString('\n')
 		code = code + str
-		if err == io.EOF{
-			break
+		if err == io.EOF || err != nil {
+			if str == "" {
+				break
+			}
 		}
 	}
+	fmt.Println(code)
 	return code
 }

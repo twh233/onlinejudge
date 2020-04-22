@@ -112,12 +112,12 @@ func (spj *SPJ)Compare(limit ResourcesLimit) (cr CompareResult){
 type Refree struct{
 	codeDir string
 	refreeDir string
-	lanuage string
+	language string
 }
 
 func (refree *Refree)Compare(limit ResourcesLimit) (cr CompareResult){
 	//compile refree file
-	ce := CompileAdapter(refree.lanuage, refree.refreeDir, "refree")
+	ce := CompileAdapter(refree.language, refree.refreeDir, "refree")
 	if ce.compileResult == base.SystemError {
 		cr.compareResult = base.SystemError
 		return
@@ -126,12 +126,12 @@ func (refree *Refree)Compare(limit ResourcesLimit) (cr CompareResult){
 		return
 	}
 
-	return RunRefree(refree.lanuage, refree.refreeDir, refree.codeDir, limit)
+	return RunRefree(refree.language, refree.refreeDir, refree.codeDir, limit)
 }
 
-func RunSPJ(lanuage string, spjDir string, inputDir string, outputDir string, userDir string) int64 {
+func RunSPJ(language string, spjDir string, inputDir string, outputDir string, userDir string) int64 {
 	var cmd *exec.Cmd
-	switch lanuage {
+	switch language {
 	case base.C, base.CPP:
 		cmd = exec.Command(spjDir + "/spj", inputDir, outputDir, userDir)
 	case base.Java:
@@ -152,10 +152,10 @@ func RunSPJ(lanuage string, spjDir string, inputDir string, outputDir string, us
 	return int64(result)
 }
 
-func RunRefree(lanuage string, refreeDir string, codeDir string, limit ResourcesLimit) (cr CompareResult){
+func RunRefree(language string, refreeDir string, codeDir string, limit ResourcesLimit) (cr CompareResult){
 	var refreeCmd *exec.Cmd
 	var codeCmd *exec.Cmd
-	switch lanuage {
+	switch language {
 	case base.C, base.CPP:
 		refreeCmd = exec.Command(refreeDir + "/refree")
 		codeCmd = exec.Command(codeDir + "/Main")
@@ -208,7 +208,7 @@ func RunRefree(lanuage string, refreeDir string, codeDir string, limit Resources
 			break
 		}
 
-		timeUsage = GetMaxInt64(timeUsage, cpuTime); if timeUsage > limit.timeLimit || runningTime > 3 * limit.timeLimit{
+		timeUsage = base.GetMaxInt64(timeUsage, cpuTime); if timeUsage > limit.timeLimit || runningTime > 3 * limit.timeLimit {
 			codeCmd.Process.Kill()
 			refreeCmd.Process.Kill()
 			cmd2 := exec.Command("kill", "-9", strconv.Itoa(codeCmd.Process.Pid))
@@ -220,7 +220,7 @@ func RunRefree(lanuage string, refreeDir string, codeDir string, limit Resources
 			cr.memoryUsed = memUsage
 			return
 		}
-		memUsage = GetMaxInt64(memUsage, rss); if memUsage*3 > limit.memoryLimit*2 || vm > limit.memoryLimit*10{
+		memUsage = base.GetMaxInt64(memUsage, rss); if memUsage*3 > limit.memoryLimit*2 || vm > limit.memoryLimit*10 {
 			codeCmd.Process.Kill()
 			refreeCmd.Process.Kill()
 			cmd2 := exec.Command("kill", "-9", strconv.Itoa(codeCmd.Process.Pid))

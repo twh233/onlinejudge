@@ -1,0 +1,26 @@
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+using namespace std;
+
+int main(){
+    int l,r;
+    scanf("%d%d",&l,&r);
+    int ans = (l+r)/2;
+    printf("%d\n",ans);
+    fflush(stdout);
+    int flag;
+    while(scanf("%d",&flag)!=EOF){
+        if(flag == 0) break;
+        if(flag == 1){
+            r = ans;
+            ans = (ans + l)/2;
+        }else{
+            l = ans;
+            ans = (ans + r)/2 + 1;
+        }
+        printf("%d\n",ans);
+        fflush(stdout);
+    }
+    return 0;
+}

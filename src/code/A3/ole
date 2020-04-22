@@ -1,0 +1,55 @@
+#include<stdio.h>
+#include<string.h>
+
+int Next[5000100], l2, ans, next[5000100];
+
+char str[5000100], s2[5000100], stl[5000100];
+
+void IntNext()
+{
+    int i=Next[0]=-1, j=0;
+    while(j<l2)
+    {
+        if(i==-1||s2[i]==s2[j])
+            i++, j++, Next[j]=i;
+        else
+            i=Next[i];
+    }
+}
+
+void KMP(char *str)
+{
+    int l1=strlen(str), i=0, j=0, top=0;
+    next[0]=0;
+    while(j<l1)
+    {
+        if(i==-1||s2[i]==str[j])
+        {
+            stl[top++]=str[j];
+            next[++j]=(++i)%l2;
+            printf("//%d %d\n", j, next[j]);
+        }
+        else
+            i=Next[i];
+        if(i>=l2)
+        {
+            ans++;
+            i=next[j-l2];
+            top-=l2;
+            printf("****%d %d %d\n", i, j, j-l2);
+        }
+    }
+    stl[top]=0;
+}
+
+int main( )
+{
+    while(~scanf("%s%s", s2, str))
+    {
+        l2=strlen(s2);
+        ans=0;
+        IntNext();
+        KMP(str);
+        printf("%d\n%s\n", ans, stl);
+    }
+}

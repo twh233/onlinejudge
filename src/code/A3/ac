@@ -1,0 +1,76 @@
+#include <cstdio>
+#include <iostream>
+#include <algorithm>
+#include <cstring>
+
+using namespace std;
+const int maxn = 5000000+7;
+
+char s1[maxn],s2[maxn];
+int fro[maxn];
+int Next[maxn];
+int arr[maxn];
+int len1,len2;
+int ans;
+
+void get_next(char str[])
+{
+    int i=0,j=-1;
+    Next[0]=-1;
+    int len=strlen(str);
+    while(i<len)
+    {
+        if(j==-1||str[i]==str[j])
+        {
+            i++;
+            j++;
+            Next[i]=j;
+        }
+        else
+        {
+            j=Next[j];
+        }
+    }
+}
+
+///abc ababcc
+int kmp(char *s1,char *s2)
+{
+    int i=0,j=0,l=0;
+    while(i<len2)
+    {
+        arr[l]=s2[i];
+        if(j==-1||s1[j]==s2[i])
+        {
+            i++,j++;
+            fro[++l]=j;
+        }
+        else{
+            j=Next[j];
+        }
+        if(j==len1)
+        {
+            l-=len1;
+            j=fro[l];
+            ans++;
+        }
+    }
+    printf("%d\n",ans);
+    for(int i=0;i<l;i++)
+        printf("%c",arr[i]);
+    puts("");
+}
+
+int main()
+{
+    while(~scanf("%s%s",s1,s2))
+    {
+        get_next(s1);
+        len1=strlen(s1);
+        len2=strlen(s2);
+        ans=0;
+        kmp(s1,s2);
+    }
+
+    return 0;
+}

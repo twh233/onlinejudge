@@ -1,0 +1,90 @@
+#include <bits/stdc++.h>
+using namespace std;
+/**
+容易得知最小值为arr[0] + brr[0]
+次小值为min(arr[0] + brr[1], arr[1] + brr[0])
+下一级为max(arr[0] + brr[1], arr[1] + brr[1])
+其实容易推导得到，下一个大的值为arr[i] + brr[j + 1] 或者 arr[i + 1] + brr[j]
+那么我们一直往下推导就可以了
+我是弟弟，我没能推导出本质
+8 8
+9451 9232 4177 5100 8787 9544 9114 3396
+6443 6326 2482 8809 5650 4492 5938 964
+
+4360 5141 5878 6064 6659 7582 7888 8669
+ * **/
+typedef long long ll;
+const int MAXN = 50000 + 5;
+struct NODE
+{
+    int i, j;
+    ll num;
+    friend bool operator<(const NODE &a, const NODE &b)
+    {
+        return a.num > b.num;
+    }
+};
+priority_queue<NODE> que;
+ll arr[MAXN];
+ll brr[MAXN];
+map<pair<int, int>, int> M;
+int n, k;
+int main()
+{
+    scanf("%d%d", &n, &k);
+    M.clear();
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%lld", &arr[i]);
+    }
+    for (int i = 0; i < n; i++)
+    {
+        scanf("%lld", &brr[i]);
+    }
+    sort(arr, arr + n);
+    sort(brr, brr + n);
+    while (!que.empty())
+    {
+        que.pop();
+    }
+    vector<ll> re;
+    re.clear();
+    NODE a;
+    a.i = a.j = 0;
+    a.num = arr[0] + brr[0];
+    M[{0, 0}] = 1;
+    que.push(a);
+    while (!que.empty())
+    {
+        if (re.size() == k)
+        {
+            break;
+        }
+        NODE be, en;
+        be = que.top();
+        que.pop();
+        re.push_back(be.num);
+        en.i = be.i;
+        en.j = be.j + 1;
+        en.num = arr[en.i] + brr[en.j];
+        if (M[{en.i, en.j}] == 0)
+        {
+            que.push(en);
+            M[{en.i, en.j}] = 1;
+        }
+        en.i = be.i + 1;
+        en.j = be.j;
+        en.num = arr[en.i] + brr[en.j];
+        if (M[{en.i, en.j}] == 0)
+        {
+            que.push(en);
+            M[{en.i, en.j}] = 1;
+        }
+    }
+    for (int i = 0; i < k; i++)
+    {
+        printf("%lld ", re[i]);
+    }
+    printf("\n");
+    return 0;
+}

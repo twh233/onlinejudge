@@ -1,0 +1,71 @@
+#include <stdio.h>
+#include <math.h>
+
+using namespace std;
+
+typedef unsigned long long ull;
+typedef __uint128_t uLL;
+typedef unsigned int uint;
+
+namespace ds {
+    namespace stac {
+        const int N = 100005;
+        uint qu[N][2]; int qr;
+        void pop () { qr --; }
+        void push (uint x, uint y) { qr ++; qu[qr][0] = x; qu[qr][1] = y; }
+        void top (uint &x, uint &y) { x = qu[qr][0]; y = qu[qr][1]; }
+    }
+    using stac :: push;
+    using stac :: pop;
+    using stac :: top;
+
+    uLL solve (ull n) {
+        uLL ret = 0;
+        ull w = pow (n, 0.35), v = sqrtl (n), x, y;
+        uint dx, dy, ux, uy, mx, my;
+        while (v * v <= n) v ++; while (v * v > n) v --;
+        x = n / v, y = n / x + 1;
+        push (1, 0); push (1, 1);
+        auto outside = [&] (ull x, ull y) { return x * y > n; };
+        auto cut_off = [&] (ull x, uint dx, uint dy) { return (uLL)x * x * dy >= (uLL)n * dx; };
+        while (stac :: qr) {
+            top (dx, dy);
+            while (outside (x + dx, y - dy)) {
+                ret += x * dy + ull(dy + 1) * (dx - 1) / 2;
+                x += dx, y -= dy;
+            }
+            if (y <= w) break;
+            while (true) {
+                pop (), ux = dx, uy = dy, top (dx, dy);
+                if (outside (x + dx, y - dy)) break;
+            }
+            while (true) {
+                mx = ux + dx, my = uy + dy;
+                if (!outside (x + mx, y - my)) {
+                    if (cut_off (x + mx, dx, dy)) break;
+                    ux = mx, uy = my;
+                } else push (dx = mx, dy = my);
+            }
+        }
+        for (y --; y; y --) ret += n / y;
+        return stac :: qr = 0, ret * 2 - v * v;
+    }
+}
+
+void print (uLL v) {
+    static char str[105]; int len;
+    if (!v) str[++ len] = '0';
+    while (v) str[++ len] = v % 10 + '0', v /= 10;
+    while (len) putchar (str[len --]);
+    putchar ('\n');
+}
+
+int main(){
+    ull n,sum=0;
+    scanf ("%llu", &n);
+    if(n>=1000000)return 0;
+    for(int i=1;i<=n;i++)
+        sum+=ds :: solve (i);
+    print (sum);
+    return 0;
+}

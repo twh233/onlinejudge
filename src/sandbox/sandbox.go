@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"judge"
 	"os"
+	"syscall"
 )
 
 type Sandbox interface {
@@ -35,10 +36,13 @@ func (s *StdSandbox)Run(submit base.Submit) (result base.Result, err error) {
 		fmt.Println("judgeDir is exist, submitId is not correct!")
 		_ = os.RemoveAll(judgeDir)
 	}
+	fmt.Println(judgeDir)
+	oldMask := syscall.Umask(0)
 	err = os.Mkdir(judgeDir, os.ModePerm); if err != nil {
 		fmt.Println("mkdir fail!")
 		return
 	}
+	syscall.Umask(oldMask)
 	judge2 := judge.CreateJudger(submit); if judge2 == nil {
 		result.Result = base.SystemError
 		return

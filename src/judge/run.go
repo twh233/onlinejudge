@@ -53,6 +53,8 @@ func (java *JAVA)Run(limit ResourcesLimit) RunResult {
 
 func RunAdapter(language string, codeDir string, inputDataDir string, exeName string, oldSuffix string, newSuffix string, limit ResourcesLimit) (rr RunResult) {
 	files, err := ioutil.ReadDir(inputDataDir)
+
+	fmt.Println("run RunAdapter Dir :", inputDataDir)
 	if err != nil {
 		fmt.Println("Run ReadDir fail:", err)
 		rr.runResult = base.SystemError
@@ -66,27 +68,32 @@ func RunAdapter(language string, codeDir string, inputDataDir string, exeName st
 	for _, file := range files {
 		if strings.Contains(file.Name(), oldSuffix) {
 			tempRr := RunByOneFile(language, codeDir, inputDataDir, codeDir, exeName, oldSuffix, newSuffix, file, limit)
-			inputFileCount ++
-			rr.fileName[file.Name()] = tempRr.runResult
+			fmt.Println(tempRr)
 
-			if tempRr.runResult != base.Accepted && limit.problemType != base.SPJ {
-				rr.runResult = tempRr.runResult
-				rr.timeUsed = tempRr.timeUsed
-				rr.memoryUsed = tempRr.memoryUsed
-				return
+			if strings.Compare(file.Name(), "000000.in") != 0 {
+				inputFileCount++
+				rr.fileName[file.Name()] = tempRr.runResult
+
+				if tempRr.runResult != base.Accepted && limit.problemType != base.SPJ {
+					rr.runResult = tempRr.runResult
+					rr.timeUsed = tempRr.timeUsed
+					rr.memoryUsed = tempRr.memoryUsed
+					return
+				}
+				timeTotal = timeTotal + tempRr.timeUsed
+				memoryMax = base.GetMaxInt64(memoryMax, tempRr.memoryUsed)
 			}
-			timeTotal = timeTotal + tempRr.timeUsed
-			memoryMax = base.GetMaxInt64(memoryMax, tempRr.memoryUsed)
 		}
 	}
 
+	fmt.Println("inputFileCount :", inputFileCount)
 	if inputFileCount == 0 {
 		return RunWithoutInputFile(language, codeDir, inputDataDir, codeDir, exeName, newSuffix, limit)
 	}
 	rr.memoryUsed = memoryMax
 	rr.timeUsed = timeTotal
 
-	if timeTotal > limit.timeLimit{
+	if timeTotal > limit.timeLimit {
 		rr.runResult = base.TimeLimitExceeded
 		return
 	}

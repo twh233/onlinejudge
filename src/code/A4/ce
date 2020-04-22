@@ -1,0 +1,86 @@
+/**
+┌───┐   ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐
+|Esc|   | F1| F2| F3| F4| | F5| F6| F7| F8| | F9|F10|F11|F12| |P/S|S L|P/B|  ┌┐    ┌┐    ┌┐
+└───┘   └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┘  └┘    └┘    └┘
+┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐ ┌───┬───┬───┐ ┌───┬───┬───┬───┐
+|~ `|! 1|@ 2|# 3|$ 4|% 5|^ 6|& 7|* 8|( 9|) 0|_ -|+ =| BacSp | |Ins|Hom|PUp| |N L| / | * | - |
+├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤ ├───┼───┼───┤ ├───┼───┼───┼───┤
+| Tab | Q | W | E | R | T | Y | U | I | O | P |[ {|] }| | \ | |Del|End|PDn| | 7 | 8 | 9 |   |
+├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤ └───┴───┴───┘ ├───┼───┼───┤ + |
+| Caps | A | S | D | F | G | H | J | K | L |; :|" '| Enter  |               | 4 | 5 | 6 |   |
+├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤     ┌───┐     ├───┼───┼───┼───┤
+| Shift  | Z | X | C | V | B | N | M |< ,|> .|? /|  Shift   |     | ↑ |     | 1 | 2 | 3 |   |
+├─────┬──┴─┬─┴──┬┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤ ┌───┼───┼───┐ ├───┴───┼───┤ E||
+| Ctrl|Win |Alt |         Space         | Alt| Fn |    |Ctrl| | ← | ↓ | → | |   0   | . |←─┘|
+└─────┴────┴────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘
+**/
+#include<stdio.h>
+#include<string.h>
+#include<string>
+#include<stdlib.h>
+#include<math.h>
+#include<algorithm>
+#include<queue>
+#include<time.h>
+#include<stack>
+#include<set>
+#include<map>
+#include<vector>
+#include<iostream>
+using namespace std;
+#define ll long long
+#define mes(x,a) memset(x,a,sizeof(x));
+#define sca(a) scanf("%d",&a)
+#define out(a) printf("%d\n",a)
+#define mk(a,b) make_pair(a,b)
+#define lowbit(x)  x & (-x)
+#define fi first
+#define se second
+#define pii pair<int, int>
+typedef unsigned long long llu;
+const int maxn=5e4+5;
+const int maxm=5e6+5;
+const int inf =0x3f3f3f3f;
+const int mod=233333;
+const double eps=1e-9;
+const double pi=acos(-1);
+int n,m,k;
+int a[maxn],b[maxn];
+int c[maxn*maxn];
+int main()
+{
+    int n;
+    sca(n);
+    int k;
+    sca(k);
+    for(int i=0; i<n; i++)
+    {
+        scanf("%d",&a[i]);
+    }
+        sort(a,a+n);
+        int num=0;
+    for(int j=0; j<n; j++)
+    {
+        scanf("%d",&b[j]);
+        c[num++]=a[0]+b[j];
+    }
+    int biggist=b[n-1]+a[0];
+    sort(b,b+n);
+    for(int i=1;i<n;i++)
+    {
+        for(int j=0;j<n;j++)
+        {
+            if((b[j]+a[i]<biggist))
+            {
+                c[num++]=a[i]+b[j];
+            }
+            else
+                break;
+        }
+    }
+    sort(c,c+num);
+    for(int i=0;i<k;i++)
+        printf("%d ",c[i]);
+    puts("");
+    return 0;
+}

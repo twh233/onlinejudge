@@ -36,13 +36,14 @@ func (judger *Judger)Run(timeLimit int64, memoryLimit int64, problemType int64) 
 	limit.timeLimit = timeLimit
 	limit.problemType = problemType
 	//run
+	fmt.Println("judge Test run :" , limit)
 	runResult := judger.runner.Run(limit)
 	result.FileName = make(map[string]int64)
 
 	result.TimeUsed = runResult.timeUsed
 	result.MemoryUsed = runResult.memoryUsed
 	result.FileName = runResult.fileName
-	if runResult.runResult != base.Accepted && runResult.runResult < base.Score{
+	if runResult.runResult != base.Accepted && runResult.runResult < base.Score {
 		result.Result = runResult.runResult
 		return
 	}

@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<iostream>
+#include<string.h>
+#include<bitset>
+#include<algorithm>
+#include<stdlib.h>
+using namespace std;
+#define MAXN 2000006
+int main()
+{
+    register int i,n;
+    scanf("%d",&n);
+    register long long sum=0,k;
+    for(i=1; i<=n; ++i)
+    {
+        k=n/i;
+        sum+=(1+k)*k*i/2;
+        sum-=k*(i-1-n%i);
+    }
+    printf("%lld\n",sum);
+    return 0;
+}

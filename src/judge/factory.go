@@ -102,7 +102,7 @@ func (this *Factory)CreateComparer(submit base.Submit) Comparer {
 			return spj
 	case base.Referee:
 			refree := &Refree{}
-			refree.lanuage = submit.Language
+			refree.language = submit.Language
 			refree.codeDir = userOutputDir
 			refree.refreeDir = standardOutputDir
 			return refree

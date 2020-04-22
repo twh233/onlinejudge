@@ -1,0 +1,30 @@
+#include<stdio.h>
+#include<string.h>
+#include<algorithm>
+#include<math.h>
+#include<assert.h>
+#include<vector>
+#include<iostream>
+using namespace std;
+typedef long long ll;
+#define N 2200000
+int main()
+{
+    int l,r,m,flag;
+    scanf("%d%d",&l,&r);
+    l--;
+    r++;
+    while(l+1<r)
+    {
+        m=(l+r)/2;
+//        printf("%d\n",m);
+        cout<<m<<endl;
+        if(scanf("%d",&flag)==EOF)
+            break;
+        if(flag<0)
+            l=m;
+        else
+            r=m;
+    }
+    return 0;
+}

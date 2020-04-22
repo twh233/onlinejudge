@@ -1,0 +1,67 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<string.h>
+#include<algorithm>
+using namespace std;
+#define pow(x) ((x)*(x))
+typedef long long ll;
+const int MAXN=100010;
+const int INF=0x3f3f3f3f;
+const ll LINF=0x3f3f3f3f3f3f3f3f;
+const double DINF=1e18;
+int idx;
+struct Point{
+    double x[2];
+    bool operator < (const Point &u)const{
+        return x[idx]<u.x[idx];
+    }
+}pt[MAXN];
+
+struct kd_Tree{
+    Point p[MAXN<<2];
+    int son[MAXN<<2];
+    int pid[MAXN<<2];
+    void build(int l,int r,int u=1,int dep=0){
+        if(l>r)return ;
+        son[u]=r-l;
+        son[u<<1]=son[u<<1|1]=-1;
+        idx=dep%2;
+        int mid=(l+r)/2;
+        nth_element(pt+l,pt+mid,pt+r+1);
+        p[u]=pt[mid],pid[u]=mid;
+        build(l,mid-1,u<<1,dep+1);
+        build(mid+1,r,u<<1|1,dep+1);
+    }
+
+    double query(Point a,int id,int u=1,int dep=0){
+        if(son[u]==-1)return DINF;
+        double dis=pow(p[u].x[0]-a.x[0])+pow(p[u].x[1]-a.x[1]);
+        if(pid[u]==id)dis=DINF;
+        int dim=dep%2,fg=0;
+        int x=u<<1,y=u<<1|1;
+        if(a.x[dim]>=p[u].x[dim])swap(x,y);
+        double tm1=DINF,tm2=DINF;
+        if(~son[x])tm1=query(a,id,x,dep+1);
+        if(pow(a.x[dim]-p[u].x[dim])<tm1)fg=1;
+        if(~son[y]&&fg)tm2=query(a,id,y,dep+1);
+        if(dis>tm1)dis=tm1;
+        if(dis>tm2)dis=tm2;
+        return dis;
+    }
+}kd;
+int main()
+{
+    int n;
+    while(~scanf("%d",&n)){
+        for(int i=1;i<=n;i++)
+            scanf("%lf%lf",&pt[i].x[0],&pt[i].x[1]);
+        kd.build(1,n);
+        double ans=DINF;
+        for(int i=1;i<=n;i++){
+            double tm=kd.query(pt[i],i);
+            if(tm<ans)ans=tm;
+        }
+        printf("%f\n",sqrt(ans));
+    }
+	return 0;
+}

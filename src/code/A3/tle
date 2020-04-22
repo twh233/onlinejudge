@@ -1,0 +1,128 @@
+/**
+┌───┐   ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┬───┐ ┌───┬───┬───┐
+|Esc|   | F1| F2| F3| F4| | F5| F6| F7| F8| | F9|F10|F11|F12| |P/S|S L|P/B|  ┌┐    ┌┐    ┌┐
+└───┘   └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┴───┘ └───┴───┴───┘  └┘    └┘    └┘
+┌───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───┬───────┐ ┌───┬───┬───┐ ┌───┬───┬───┬───┐
+|~ `|! 1|@ 2|# 3|$ 4|% 5|^ 6|& 7|* 8|( 9|) 0|_ -|+ =| BacSp | |Ins|Hom|PUp| |N L| / | * | - |
+├───┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─────┤ ├───┼───┼───┤ ├───┼───┼───┼───┤
+| Tab | Q | W | E | R | T | Y | U | I | O | P |[ {|] }| | \ | |Del|End|PDn| | 7 | 8 | 9 |   |
+├─────┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴┬──┴─────┤ └───┴───┴───┘ ├───┼───┼───┤ + |
+| Caps | A | S | D | F | G | H | J | K | L |; :|" '| Enter  |               | 4 | 5 | 6 |   |
+├──────┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴─┬─┴────────┤     ┌───┐     ├───┼───┼───┼───┤
+| Shift  | Z | X | C | V | B | N | M |< ,|> .|? /|  Shift   |     | ↑ |     | 1 | 2 | 3 |   |
+├─────┬──┴─┬─┴──┬┴───┴───┴───┴───┴───┴──┬┴───┼───┴┬────┬────┤ ┌───┼───┼───┐ ├───┴───┼───┤ E||
+| Ctrl|Win |Alt |         Space         | Alt| Fn |    |Ctrl| | ← | ↓ | → | |   0   | . |←─┘|
+└─────┴────┴────┴───────────────────────┴────┴────┴────┴────┘ └───┴───┴───┘ └───────┴───┴───┘
+**/
+#include<stdio.h>
+#include<string.h>
+#include<string>
+#include<stdlib.h>
+#include<math.h>
+#include<algorithm>
+#include<queue>
+#include<time.h>
+#include<stack>
+#include<set>
+#include<map>
+#include<vector>
+#include<iostream>
+using namespace std;
+#define ll long long
+#define mes(x,a) memset(x,a,sizeof(x));
+#define sca(a) scanf("%d",&a)
+#define out(a) printf("%d\n",a)
+#define mk(a,b) make_pair(a,b)
+#define lowbit(x)  x & (-x)
+#define fi first
+#define se second
+#define pii pair<int, int>
+typedef unsigned long long llu;
+const int maxn=1e5+5;
+const int maxm=5e4+5;
+const int inf =0x3f3f3f3f;
+const int mod=233333;
+const double eps=1e-9;
+const double pi=acos(-1);
+int n,m,k;
+char c[5000005],s[5000005];
+int after[5000005];
+int Next[5000005];
+void get_Next(char s2[],int len2)
+{
+    Next[0]=-1;
+    int j=0,k=-1;
+    while(j<len2)
+    {
+        if(k==-1||s2[j]==s2[k])
+        {
+            ++j;
+            ++k;
+            ///较之前Next数组求法，改动在下面4行
+            if (s2[j] != s2[k])
+                Next[j] = k;
+            else
+                ///因为不能出现p[j] = p[ Next[j ]]，所以当出现时需要继续递归，k = Next[k] = Next[Next[k]]
+                Next[j] = Next[k];
+        }
+        else
+            k=Next[k];///如果不想等就回溯 去找相等的前后缀长
+    }
+}
+void kmp(char s1[],char s2[],int len1,int len2)
+{
+    stack<int>sta;
+    int nums=0;
+    int i=0,j=0;
+    sta.push(0);
+    int flag=0;
+    while(i<len1)
+    {
+        //printf("%d %d %d\n",i,j,after[i]);
+        if(j==-1||s1[i]==s2[j])
+        {
+            if(sta.empty()||(j==0&&i!=sta.top()))
+                sta.push(i);
+            i=after[i];
+            j++;
+            if(j==len2)
+            {
+               // printf("%d %d\n",i,j);
+                nums++;
+                if(sta.top()==0)
+                    flag=i;
+                else
+                    after[sta.top()-1]=i;
+                sta.pop();
+                j=0;
+                //puts("1");
+                if(!sta.empty())
+                    i=sta.top();
+            }
+        }
+        else
+            j=Next[j];
+    }
+    printf("%d\n",nums);
+    if(len1-nums*len2!=0)
+    {
+        for(int i=flag;i<len1;i=after[i])
+            putchar(s1[i]);
+    }
+    puts("");
+}
+
+int main()
+{
+    int t;
+    while(~scanf("%s%s",s,c))
+    {
+        after[0]=1;
+        for(int i=1;c[i];i++)
+            after[i]=i+1;
+        int len=strlen(s);
+        get_Next(s,len);
+        kmp(c,s,strlen(c),len);
+    }
+    return 0;
+}

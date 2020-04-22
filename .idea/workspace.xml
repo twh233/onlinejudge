@@ -2,17 +2,99 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eef1dfdb-6135-4657-9cf7-05686937b85e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/base/result.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/base/submit.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/control/submitController.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/judge/factory.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main1.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A1/1.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A1/1.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A1/ac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A1/data3.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A1/data3.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A1/dg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A1/mle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A1/ole" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A1/pe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A1/re" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A1/tle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A1/wa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A2/ac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A2/ole" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A2/sample.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A2/sample.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A2/test.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A2/test.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A3/1.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A3/1.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A3/2.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A3/2.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A3/3.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A3/3.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A3/ac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A3/ole" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A3/tle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/1.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/1.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/2.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/2.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/3.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/3.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/4.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/4.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/5.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/5.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/ac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/ce" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/hack1.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/hack1.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/hack2.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/hack2.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/hack3.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/hack3.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/mle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/re" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/tle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/A4/wa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/Func/1.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/Func/1.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/Func/ac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/Func/insert.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/Func/wa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/Refree/ac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/Refree/refree.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/Refree/score0" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/Refree/score100" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Normal/ac" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Normal/in1_test.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Normal/in1_test.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Normal/in2_test.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Normal/in2_test.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Normal/spj.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Normal/wa" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Score/S3.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Score/S3.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Score/s1.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Score/s1.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Score/s2.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Score/s2.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Score/score100" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Score/score40" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Score/spj.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Score/w1.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Score/w1.out" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Score/w2.in" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/code/SPJ/Score/w2.out" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/base/tools.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/base/tools.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/judge/1001.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/judge/1001.out" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/judge/1001/1001.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/judge/spj.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/data/out/1001.user" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/judge/compare.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/judge/compare.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/judge/factory.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/judge/factory.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/judge/judge.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/judge/judge.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/judge/run.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/judge/run.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main1.go" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sandbox/sandbox.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/sandbox/sandbox.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sandbox/sandbox_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/sandbox/sandbox_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/src" beforeDir="false" afterPath="$PROJECT_DIR$/src/src" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +128,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/control" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
@@ -74,7 +156,17 @@
       <updated>1585726851543</updated>
       <workItem from="1585726853154" duration="6176000" />
       <workItem from="1585890380546" duration="6041000" />
-      <workItem from="1586238468206" duration="5731000" />
+      <workItem from="1586238468206" duration="5900000" />
+      <workItem from="1586408606681" duration="284000" />
+      <workItem from="1586415911759" duration="2050000" />
+      <workItem from="1586486542220" duration="2536000" />
+      <workItem from="1586775462746" duration="3099000" />
+      <workItem from="1586858348875" duration="2039000" />
+      <workItem from="1587295804531" duration="4616000" />
+      <workItem from="1587435511206" duration="1615000" />
+      <workItem from="1587437342746" duration="3304000" />
+      <workItem from="1587450257034" duration="4786000" />
+      <workItem from="1587536943645" duration="1296000" />
     </task>
     <servers />
   </component>
@@ -86,5 +178,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#GOROOT/0.0.1920.1040@0.0.1920.1040" timestamp="1585726904805" />
+    <state x="637" y="253" width="647" height="534" key="find.popup" timestamp="1587459029590">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="637" y="253" width="647" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587459029590" />
   </component>
 </project>

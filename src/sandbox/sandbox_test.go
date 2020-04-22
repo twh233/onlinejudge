@@ -1,22 +1,19 @@
 package sandbox_test
 
 import (
-	"controllers"
+	"base"
 	"fmt"
 	"os"
 	"path/filepath"
-	"server/base"
-	"server/filetools"
-	"server/sandbox"
+	"sandbox"
 	"strings"
 	"testing"
 )
 
 func TestAplusBAC(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A1/ac")
-
-	submit := controllers.Submit{}
+	code := base.ReadCodeFromFile(currentDir + "/A1/ac")
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A1"
@@ -37,9 +34,9 @@ func TestAplusBAC(t *testing.T) {
 
 func TestAplusBWA(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A1/wa")
+	code := base.ReadCodeFromFile(currentDir + "/A1/wa")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A1"
@@ -60,9 +57,9 @@ func TestAplusBWA(t *testing.T) {
 
 func TestAplusBRE(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A1/re")
+	code := base.ReadCodeFromFile(currentDir + "/A1/re")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A1"
@@ -83,9 +80,9 @@ func TestAplusBRE(t *testing.T) {
 
 func TestAplusBDG(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A1/dg")
+	code := base.ReadCodeFromFile(currentDir + "/A1/dg")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A1"
@@ -106,9 +103,9 @@ func TestAplusBDG(t *testing.T) {
 
 func TestAplusBPE(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A1/pe")
+	code := base.ReadCodeFromFile(currentDir + "/A1/pe")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A1"
@@ -129,9 +126,9 @@ func TestAplusBPE(t *testing.T) {
 
 func TestAplusBOLE(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A1/ole")
+	code := base.ReadCodeFromFile(currentDir + "/A1/ole")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A1"
@@ -152,9 +149,9 @@ func TestAplusBOLE(t *testing.T) {
 
 func TestAplusBTLE(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A1/tle")
+	code := base.ReadCodeFromFile(currentDir + "/A1/tle")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A1"
@@ -175,9 +172,9 @@ func TestAplusBTLE(t *testing.T) {
 
 func TestAplusBMLE(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A1/mle")
+	code := base.ReadCodeFromFile(currentDir + "/A1/mle")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A1"
@@ -198,9 +195,9 @@ func TestAplusBMLE(t *testing.T) {
 
 func TestASubBAC(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A2/ac")
+	code := base.ReadCodeFromFile(currentDir + "/A2/ac")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A2"
@@ -220,9 +217,9 @@ func TestASubBAC(t *testing.T) {
 
 func TestASubBOLE(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A2/ole")
+	code := base.ReadCodeFromFile(currentDir + "/A2/ole")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A2"
@@ -242,9 +239,9 @@ func TestASubBOLE(t *testing.T) {
 
 func TestKMPAC(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A3/ac")
+	code := base.ReadCodeFromFile(currentDir + "/A3/ac")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A3"
@@ -264,9 +261,9 @@ func TestKMPAC(t *testing.T) {
 
 func TestKMPOLE(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A3/ole")
+	code := base.ReadCodeFromFile(currentDir + "/A3/ole")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A3"
@@ -286,9 +283,9 @@ func TestKMPOLE(t *testing.T) {
 
 /*func TestKMPTLE(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A3/tle")
+	code := base.ReadCodeFromFile(currentDir + "/A3/tle")
 
-	submit := controllers.Submit{}
+	submit := control.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A3"
@@ -308,9 +305,9 @@ func TestKMPOLE(t *testing.T) {
 
 func TestGreedAC(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A4/ac")
+	code := base.ReadCodeFromFile(currentDir + "/A4/ac")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A4"
@@ -330,9 +327,9 @@ func TestGreedAC(t *testing.T) {
 
 func TestGreedCE(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A4/ce")
+	code := base.ReadCodeFromFile(currentDir + "/A4/ce")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A4"
@@ -352,9 +349,9 @@ func TestGreedCE(t *testing.T) {
 
 func TestGreedWA(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A4/wa")
+	code := base.ReadCodeFromFile(currentDir + "/A4/wa")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A4"
@@ -374,9 +371,9 @@ func TestGreedWA(t *testing.T) {
 
 func TestGreedTLE(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A4/tle")
+	code := base.ReadCodeFromFile(currentDir + "/A4/tle")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A4"
@@ -396,9 +393,9 @@ func TestGreedTLE(t *testing.T) {
 
 func TestGreedMLE(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A4/mle")
+	code := base.ReadCodeFromFile(currentDir + "/A4/mle")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A4"
@@ -418,9 +415,9 @@ func TestGreedMLE(t *testing.T) {
 
 func TestGreedRE(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/A4/re")
+	code := base.ReadCodeFromFile(currentDir + "/A4/re")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.ICPC
 	submit.ProblemId = "A4"
@@ -440,9 +437,9 @@ func TestGreedRE(t *testing.T) {
 
 func TestSPJ40(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/SPJ/Score/score40")
+	code := base.ReadCodeFromFile(currentDir + "/SPJ/Score/score40")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.SPJ
 	submit.ProblemId = "Score"
@@ -463,9 +460,9 @@ func TestSPJ40(t *testing.T) {
 
 func TestSPJ100(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/SPJ/Score/score100")
+	code := base.ReadCodeFromFile(currentDir + "/SPJ/Score/score100")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.SPJ
 	submit.ProblemId = "Score"
@@ -486,9 +483,9 @@ func TestSPJ100(t *testing.T) {
 
 func TestSPJAC(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/SPJ/Normal/ac")
+	code := base.ReadCodeFromFile(currentDir + "/SPJ/Normal/ac")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.SPJ
 	submit.ProblemId = "Normal"
@@ -509,9 +506,9 @@ func TestSPJAC(t *testing.T) {
 
 func TestSPJWA(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/SPJ/Normal/wa")
+	code := base.ReadCodeFromFile(currentDir + "/SPJ/Normal/wa")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.SPJ
 	submit.ProblemId = "Normal"
@@ -532,9 +529,9 @@ func TestSPJWA(t *testing.T) {
 
 func TestFuncAC(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/Func/ac")
+	code := base.ReadCodeFromFile(currentDir + "/Func/ac")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.Functional
 	submit.ProblemId = "Func"
@@ -555,9 +552,9 @@ func TestFuncAC(t *testing.T) {
 
 func TestFuncWA(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/Func/wa")
+	code := base.ReadCodeFromFile(currentDir + "/Func/wa")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.Functional
 	submit.ProblemId = "Func"
@@ -578,9 +575,9 @@ func TestFuncWA(t *testing.T) {
 
 func TestRefreeAC(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/Refree/ac")
+	code := base.ReadCodeFromFile(currentDir + "/Refree/ac")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.Referee
 	submit.ProblemId = "Refree"
@@ -601,9 +598,9 @@ func TestRefreeAC(t *testing.T) {
 
 func TestRefreeScore100(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/Refree/score100")
+	code := base.ReadCodeFromFile(currentDir + "/Refree/score100")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.Referee
 	submit.ProblemId = "Refree"
@@ -624,9 +621,9 @@ func TestRefreeScore100(t *testing.T) {
 
 func TestRefreeScore0(t *testing.T) {
 	currentDir := getCurrentDir()
-	code := filetools.ReadCodeFromFile(currentDir + "/Refree/score0")
+	code := base.ReadCodeFromFile(currentDir + "/Refree/score0")
 
-	submit := controllers.Submit{}
+	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.Referee
 	submit.ProblemId = "Refree"
@@ -646,15 +643,18 @@ func TestRefreeScore0(t *testing.T) {
 }
 
 func getCurrentDir() (cd string){
-	cd,_ = filepath.Abs("./")
+	cd, err := filepath.Abs("./")
+	if err != nil {
+		panic(err)
+	}
 	cd = strings.Replace(cd, "/sandbox", "/code", -1)
 	return
 }
 
 func setFile(cd string, pid string, fileName string){
 	dataDir := base.RootDir + base.DataDir + "/" + pid
-	//filetools.CreateDir(dataDir)
-	inputContext := filetools.ReadAll(cd + "/A1/" + fileName)
+	//base.CreateDir(dataDir)
+	inputContext := base.ReadAll(cd + "/A1/" + fileName)
 	file,_ := os.OpenFile(dataDir + "/" + fileName, os.O_CREATE|os.O_RDWR|os.O_TRUNC, 0777)
 	_, _ = file.Write(inputContext)
 }
