@@ -27,7 +27,7 @@ func init() {
 	PAGESIZE = int64(syscall.Getpagesize())
 }
 
-func GetResourceUsage(pid int) (ok bool, vm int64, rss int64,
+func GetResourceUsage(pid int) (ok bool, rss int64,
 	rt int64, ct int64) {
 	stat, err := os.Open("/proc/" + strconv.Itoa(pid) + "/stat")
 	if err != nil {
@@ -38,11 +38,7 @@ func GetResourceUsage(pid int) (ok bool, vm int64, rss int64,
 		}
 	}
 	bs, err := ioutil.ReadAll(stat)
-	if err != nil {
-		return
-	}
-	//virtual memory size is 23nd paramater in the stat file,in bytes
-	vm, err = strconv.ParseInt(strings.Split(string(bs), " ")[22], 10, 64)
+
 	if err != nil {
 		return
 	}

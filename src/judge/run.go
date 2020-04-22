@@ -172,7 +172,8 @@ func RunByOneFile(language string, codeDir string, inputDataDir string, outputDa
 		}
 		_, err = syscall.Wait4(pid, nil, 0, nil)
 
-		ok, vm, rss, runningTime, cpuTime := base.GetResourceUsage(cmd.Process.Pid)
+		ok, rss, runningTime, cpuTime := base.GetResourceUsage(cmd.Process.Pid)
+
 		if !ok {
 			break
 		}
@@ -185,7 +186,8 @@ func RunByOneFile(language string, codeDir string, inputDataDir string, outputDa
 			rr.memoryUsed = memUsage
 			return
 		}
-		memUsage = base.GetMaxInt64(memUsage, rss); if memUsage*3 > limit.memoryLimit*2 || vm > limit.memoryLimit*10 && language != base.Java {
+
+		memUsage = base.GetMaxInt64(memUsage, rss); if memUsage * 3 > limit.memoryLimit * 2 {
 			cmd.Process.Kill()
 			cmd2 := exec.Command("kill", "-9", strconv.Itoa(pid))
 			_ = cmd2.Run()
@@ -220,6 +222,7 @@ func RunByOneFile(language string, codeDir string, inputDataDir string, outputDa
 		rr.runResult = base.Accepted
 	}
 
+	fmt.Println(rr)
 	return
 }
 
@@ -264,7 +267,7 @@ func RunWithoutInputFile(lanuage string, codeDir string, inputDataDir, outputDat
 
 	go func(){
 		for{
-			ok, vm, rss, runningTime, cpuTime := base.GetResourceUsage(cmd.Process.Pid)
+			ok, rss, runningTime, cpuTime := base.GetResourceUsage(cmd.Process.Pid)
 			if !ok {
 				break
 			}
@@ -277,7 +280,7 @@ func RunWithoutInputFile(lanuage string, codeDir string, inputDataDir, outputDat
 				rr.memoryUsed = memUsage
 				return
 			}
-			memUsage = base.GetMaxInt64(memUsage, rss); if memUsage*3 > limit.memoryLimit*2 || vm > limit.memoryLimit*10{
+			memUsage = base.GetMaxInt64(memUsage, rss); if memUsage*3 > limit.memoryLimit*2 {
 				cmd.Process.Kill()
 				cmd2 := exec.Command("kill", "-9", strconv.Itoa(pid))
 				_ = cmd2.Run()

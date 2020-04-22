@@ -203,7 +203,7 @@ func RunRefree(language string, refreeDir string, codeDir string, limit Resource
 	var memUsage int64 = 0
 
 	for {
-		ok, vm, rss, runningTime, cpuTime := base.GetResourceUsage(codeCmd.Process.Pid)
+		ok, rss, runningTime, cpuTime := base.GetResourceUsage(codeCmd.Process.Pid)
 		if !ok {
 			break
 		}
@@ -220,7 +220,7 @@ func RunRefree(language string, refreeDir string, codeDir string, limit Resource
 			cr.memoryUsed = memUsage
 			return
 		}
-		memUsage = base.GetMaxInt64(memUsage, rss); if memUsage*3 > limit.memoryLimit*2 || vm > limit.memoryLimit*10 {
+		memUsage = base.GetMaxInt64(memUsage, rss); if memUsage*3 > limit.memoryLimit*2 {
 			codeCmd.Process.Kill()
 			refreeCmd.Process.Kill()
 			cmd2 := exec.Command("kill", "-9", strconv.Itoa(codeCmd.Process.Pid))
