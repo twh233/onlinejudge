@@ -39,7 +39,7 @@ func (dn *DoNothing)Compare(limit ResourcesLimit) (cr CompareResult){
 
 func (resultFileCompare *ResultFileCompare)Compare(limit ResourcesLimit) (cr CompareResult) {
 	files, err := ioutil.ReadDir(resultFileCompare.standardOutputDir)
-	if err != nil{
+	if err != nil {
 		cr.compareResult = base.SystemError
 		return
 	}
@@ -73,13 +73,13 @@ func (spj *SPJ)Compare(limit ResourcesLimit) (cr CompareResult){
 	if ce.compileResult == base.SystemError {
 		cr.compareResult = base.SystemError
 		return
-	}else if ce.compileResult == base.CompilationError{
+	}else if ce.compileResult == base.CompilationError {
 		cr.compareResult = base.SystemError
 		return
 	}
 	//get user output files
 	files, err := ioutil.ReadDir(spj.userOutputDir)
-	if err != nil{
+	if err != nil {
 		cr.compareResult = base.SystemError
 		return
 	}
@@ -87,17 +87,20 @@ func (spj *SPJ)Compare(limit ResourcesLimit) (cr CompareResult){
 	var scoreSum int64 = 0
 	var fileCount int64 = 0
 	cr.fileName = make(map[string]int64)
-	for _, f := range files{
-		if strings.Contains(f.Name(), ".user"){
-			if strings.Compare(f.Name(), "000000.user") == 0{
+	for _, f := range files {
+		if strings.Contains(f.Name(), ".user") {
+			if strings.Compare(f.Name(), "000000.user") == 0 {
 				continue
 			}
 			inputFileName := strings.Replace(f.Name(), ".user", ".in", -1)
 			outputFileName := strings.Replace(f.Name(), ".user", ".out", -1)
+			fmt.Println("&&&&" + f.Name())
+			fmt.Println(string(base.ReadAll( spj.spjDir + "/" + f.Name())))
+			//fmt.Println(string(base.ReadAll( spj.spjDir + "/" + outputFileName)))
 			result := RunSPJ(spj.spjLanuage, spj.spjDir, spj.spjDir + "/" + inputFileName, spj.spjDir + "/" + outputFileName, spj.userOutputDir + "/" + f.Name())
 			fileName := strings.Replace(f.Name(), ".user", ".in", -1)
 			cr.fileName[fileName] = result
-			if result != base.Accepted && result < base.Score{
+			if result != base.Accepted && result < base.Score {
 				cr.compareResult = result
 				return
 			}
@@ -140,13 +143,19 @@ func RunSPJ(language string, spjDir string, inputDir string, outputDir string, u
 		return base.SystemError
 	}
 	cmd.Dir = spjDir
+	fmt.Println(userDir)
+	//fmt.Println(string(base.ReadAll(outputDir)))
 
+	fmt.Println()
+	fmt.Println(string(base.ReadAll(userDir)))
 	_ = cmd.Run()
 
 	result := cmd.ProcessState.Sys().(syscall.WaitStatus).ExitStatus()
-	if result == 0{
+
+	fmt.Println(result)
+	if result == 0 {
 		result = 1
-	}else if result == 4{
+	}else if result == 4 {
 		result = 2
 	}
 	return int64(result)
@@ -242,12 +251,16 @@ func RunRefree(language string, refreeDir string, codeDir string, limit Resource
 	return
 }
 
-func IsSameWithoutInvisableChar(dir1 string, dir2 string) int64{
+func IsSameWithoutInvisableChar(dir1 string, dir2 string) int64 {
 	byte1 := base.ReadAll(dir1)
 	byte2 := base.ReadAll(dir2)
 	str1 := string(byte1)
 	str2 := string(byte2)
+	fmt.Println(dir1 + "\n" + str1)
 
+	fmt.Println("jjjjjjj")
+
+	fmt.Println(dir2 + "\n" + str2)
 	//remove str1's invaisable char
 	str1 = strings.Replace(str1, "\t", "", -1)
 	str1 = strings.Replace(str1, "\n", "", -1)
@@ -259,15 +272,15 @@ func IsSameWithoutInvisableChar(dir1 string, dir2 string) int64{
 	str2 = strings.Replace(str2, " ", "", -1)
 	str2 = strings.Replace(str2, "\r", "", -1)
 
-	if strings.Compare(str1, str2) == 0{
+	if strings.Compare(str1, str2) == 0 {
 		return base.Accepted
 	}else {
 		return base.WrongAnswer
 	}
 }
 
-func CompareOneFile(dir1 string, dir2 string) int64{
-	if IsSameWithoutInvisableChar(dir1, dir2) != base.Accepted{
+func CompareOneFile(dir1 string, dir2 string) int64 {
+	if IsSameWithoutInvisableChar(dir1, dir2) != base.Accepted {
 		return base.WrongAnswer
 	}
 

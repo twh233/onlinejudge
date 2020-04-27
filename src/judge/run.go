@@ -68,12 +68,9 @@ func RunAdapter(language string, codeDir string, inputDataDir string, exeName st
 	for _, file := range files {
 		if strings.Contains(file.Name(), oldSuffix) {
 			tempRr := RunByOneFile(language, codeDir, inputDataDir, codeDir, exeName, oldSuffix, newSuffix, file, limit)
-			fmt.Println(tempRr)
-
-			if strings.Compare(file.Name(), "000000.in") != 0 {
+			//if strings.Compare(file.Name(), "000000.in") != 0 {
 				inputFileCount++
 				rr.fileName[file.Name()] = tempRr.runResult
-
 				if tempRr.runResult != base.Accepted && limit.problemType != base.SPJ {
 					rr.runResult = tempRr.runResult
 					rr.timeUsed = tempRr.timeUsed
@@ -82,11 +79,10 @@ func RunAdapter(language string, codeDir string, inputDataDir string, exeName st
 				}
 				timeTotal = timeTotal + tempRr.timeUsed
 				memoryMax = base.GetMaxInt64(memoryMax, tempRr.memoryUsed)
-			}
+			//}
 		}
 	}
 
-	fmt.Println("inputFileCount :", inputFileCount)
 	if inputFileCount == 0 {
 		return RunWithoutInputFile(language, codeDir, inputDataDir, codeDir, exeName, newSuffix, limit)
 	}
@@ -114,8 +110,10 @@ func RunByOneFile(language string, codeDir string, inputDataDir string, outputDa
 	}
 	//create output file
 	fileName := strings.Replace(f.Name(), oldSuffix, newSuffix, -1)
+
 	outputFile, err := os.OpenFile(outputDataDir + "/" + fileName, os.O_CREATE|os.O_RDWR|os.O_TRUNC, 0777)
 	defer outputFile.Close()
+	fmt.Println("116:", outputDataDir + "/" + fileName)
 	if err != nil {
 		fmt.Println("Run RunByOneFile outputFile fail:", err)
 		rr.runResult = base.SystemError
@@ -271,7 +269,7 @@ func RunWithoutInputFile(lanuage string, codeDir string, inputDataDir, outputDat
 			if !ok {
 				break
 			}
-			timeUsage = base.GetMaxInt64(timeUsage, cpuTime); if timeUsage > limit.timeLimit || runningTime > 3 * limit.timeLimit{
+			timeUsage = base.GetMaxInt64(timeUsage, cpuTime); if timeUsage > limit.timeLimit || runningTime > 3 * limit.timeLimit {
 				cmd.Process.Kill()
 				cmd2 := exec.Command("kill", "-9", strconv.Itoa(pid))
 				_ = cmd2.Run()

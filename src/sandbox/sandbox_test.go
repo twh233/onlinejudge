@@ -488,7 +488,7 @@ func TestSPJAC(t *testing.T) {
 	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.SPJ
-	submit.ProblemId = "Normal"
+	submit.ProblemId = "SPJ/Normal"
 	submit.UserCode = code
 	submit.SubmitId = "18"
 
@@ -511,7 +511,7 @@ func TestSPJWA(t *testing.T) {
 	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.SPJ
-	submit.ProblemId = "Normal"
+	submit.ProblemId = "SPJ/Normal"
 	submit.UserCode = code
 	submit.SubmitId = "19"
 
