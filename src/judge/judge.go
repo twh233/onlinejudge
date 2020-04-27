@@ -36,7 +36,6 @@ func (judger *Judger)Run(timeLimit int64, memoryLimit int64, problemType int64) 
 	limit.timeLimit = timeLimit
 	limit.problemType = problemType
 	//run
-	fmt.Println("judge Test run :" , limit)
 	runResult := judger.runner.Run(limit)
 	result.FileName = make(map[string]int64)
 

@@ -67,7 +67,13 @@ func RunAdapter(language string, codeDir string, inputDataDir string, exeName st
 
 	for _, file := range files {
 		if strings.Contains(file.Name(), oldSuffix) {
-			tempRr := RunByOneFile(language, codeDir, inputDataDir, codeDir, exeName, oldSuffix, newSuffix, file, limit)
+			temp := make(chan RunResult)
+
+			go func() {
+				tp := RunByOneFile(language, codeDir, inputDataDir, codeDir, exeName, oldSuffix, newSuffix, file, limit)
+				temp <- tp
+			}()
+			tempRr := <-temp
 			//if strings.Compare(file.Name(), "000000.in") != 0 {
 				inputFileCount++
 				rr.fileName[file.Name()] = tempRr.runResult
@@ -102,6 +108,8 @@ func RunByOneFile(language string, codeDir string, inputDataDir string, outputDa
 	outputFileName := strings.Replace(f.Name(), oldSuffix, ".out", -1)
 
 	inputFile, err := os.Open(inputDataDir + "/" + f.Name())
+
+	fmt.Println("106: ", inputDataDir + "/" + f.Name())
 	defer inputFile.Close()
 	if err != nil {
 		fmt.Println("Run RunByOneFile inputFile fail:", err)
@@ -248,7 +256,7 @@ func RunWithoutInputFile(lanuage string, codeDir string, inputDataDir, outputDat
 	cmd.Stdout = outputFile
 	cmd.Dir = codeDir
 	cmd.SysProcAttr = &syscall.SysProcAttr{Ptrace: true}
-	err = cmd.Start(); if err != nil{
+	err = cmd.Start(); if err != nil {
 		fmt.Println("star err",err)
 	}
 

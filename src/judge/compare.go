@@ -94,9 +94,6 @@ func (spj *SPJ)Compare(limit ResourcesLimit) (cr CompareResult){
 			}
 			inputFileName := strings.Replace(f.Name(), ".user", ".in", -1)
 			outputFileName := strings.Replace(f.Name(), ".user", ".out", -1)
-			fmt.Println("&&&&" + f.Name())
-			fmt.Println(string(base.ReadAll( spj.spjDir + "/" + f.Name())))
-			//fmt.Println(string(base.ReadAll( spj.spjDir + "/" + outputFileName)))
 			result := RunSPJ(spj.spjLanuage, spj.spjDir, spj.spjDir + "/" + inputFileName, spj.spjDir + "/" + outputFileName, spj.userOutputDir + "/" + f.Name())
 			fileName := strings.Replace(f.Name(), ".user", ".in", -1)
 			cr.fileName[fileName] = result
@@ -152,7 +149,7 @@ func RunSPJ(language string, spjDir string, inputDir string, outputDir string, u
 
 	result := cmd.ProcessState.Sys().(syscall.WaitStatus).ExitStatus()
 
-	fmt.Println(result)
+	fmt.Println("152:", result)
 	if result == 0 {
 		result = 1
 	}else if result == 4 {
@@ -256,11 +253,6 @@ func IsSameWithoutInvisableChar(dir1 string, dir2 string) int64 {
 	byte2 := base.ReadAll(dir2)
 	str1 := string(byte1)
 	str2 := string(byte2)
-	fmt.Println(dir1 + "\n" + str1)
-
-	fmt.Println("jjjjjjj")
-
-	fmt.Println(dir2 + "\n" + str2)
 	//remove str1's invaisable char
 	str1 = strings.Replace(str1, "\t", "", -1)
 	str1 = strings.Replace(str1, "\n", "", -1)
@@ -309,8 +301,8 @@ func CompareOneFile(dir1 string, dir2 string) int64 {
 		str2 = strings.Replace(str2, "\n", "", -1)
 		str1 = strings.TrimSpace(str1)
 		str2 = strings.TrimSpace(str2)
-		//fmt.Println(str1)
-		//fmt.Println(str2)
+		fmt.Println(str1)
+		fmt.Println(str2)
 
 		if strings.Compare(str1, str2) != 0 {
 			return base.PresentationError

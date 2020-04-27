@@ -2,14 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eef1dfdb-6135-4657-9cf7-05686937b85e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/code/SPJ/Normal/1.in" beforeDir="false" afterPath="$PROJECT_DIR$/src/code/SPJ/Normal/1.in" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/code/SPJ/Normal/1.out" beforeDir="false" afterPath="$PROJECT_DIR$/src/code/SPJ/Normal/1.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/code/SPJ/Normal/2.in" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/code/SPJ/Normal/2.out" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/code/SPJ/Normal/ac" beforeDir="false" afterPath="$PROJECT_DIR$/src/code/SPJ/Normal/ac" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/code/SPJ/Normal/in1_test.in" beforeDir="false" afterPath="$PROJECT_DIR$/src/code/SPJ/Normal/1.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/code/SPJ/Normal/in1_test.out" beforeDir="false" afterPath="$PROJECT_DIR$/src/code/SPJ/Normal/1.out" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/code/SPJ/Normal/in2_test.in" beforeDir="false" afterPath="$PROJECT_DIR$/src/code/SPJ/Normal/2.in" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/code/SPJ/Normal/in2_test.out" beforeDir="false" afterPath="$PROJECT_DIR$/src/code/SPJ/Normal/2.out" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/code/SPJ/Normal/wa" beforeDir="false" afterPath="$PROJECT_DIR$/src/code/SPJ/Normal/wa" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/judge/compare.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/judge/compare.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/judge/compiler.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/judge/compiler.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/judge/judge.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/judge/judge.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/judge/run.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/judge/run.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sandbox/sandbox_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/src/sandbox/sandbox_test.go" afterDir="false" />
     </list>
@@ -86,7 +88,7 @@
       <workItem from="1587536943645" duration="5581000" />
       <workItem from="1587875797008" duration="1372000" />
       <workItem from="1587877203971" duration="4461000" />
-      <workItem from="1587955615750" duration="7710000" />
+      <workItem from="1587955615750" duration="15357000" />
     </task>
     <servers />
   </component>
@@ -98,9 +100,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#GOROOT/0.0.1920.1040@0.0.1920.1040" timestamp="1585726904805" />
-    <state x="637" y="253" width="647" height="534" key="find.popup" timestamp="1587969939557">
+    <state x="637" y="253" width="647" height="534" key="find.popup" timestamp="1587975910709">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="637" y="253" width="647" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587969939557" />
+    <state x="637" y="253" width="647" height="534" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587975910709" />
   </component>
 </project>

@@ -442,7 +442,7 @@ func TestSPJ40(t *testing.T) {
 	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.SPJ
-	submit.ProblemId = "Score"
+	submit.ProblemId = "SPJ/Score"
 	submit.UserCode = code
 	submit.SubmitId = "16"
 
@@ -465,7 +465,7 @@ func TestSPJ100(t *testing.T) {
 	submit := base.Submit{}
 	submit.Language = base.CPP
 	submit.ProblemType = base.SPJ
-	submit.ProblemId = "Score"
+	submit.ProblemId = "SPJ/Score"
 	submit.UserCode = code
 	submit.SubmitId = "17"
 

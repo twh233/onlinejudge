@@ -1,44 +1,14 @@
 #include<stdio.h>
-#include<string.h>
 #include<math.h>
-#include<algorithm>
-#define MIN(a,b) (((a)<(b))?(a):(b))
-using namespace std;
-struct nodes
+main()
 {
-    long long int x,y;
-} node[10010];
-int cmp(nodes a,nodes b)
-{
-    if(a.x<b.x)
-        return 1;
-    if(a.x==b.x)
-        if(a.y<b.y)return 1;
-        else return 0;
-    else return 0;
-}
-int main()
-{
-    int n,i,j;
-    nodes high;
-    double ans=1e50;
-    while(~scanf("%d",&n))
-    {
-        ans=1e21;
-        for(i=1; i<=n; i++)
-        {
-            scanf("%lld",&node[i].x);
-            scanf("%lld",&node[i].y);
-        }
-        sort(&node[1],&node[n+1],cmp);
-        for(i=1; i<=n; i++)
-            for(j=i+1; j<=n; j++)
-            {
-                ans=MIN(ans,sqrt((node[j].y-node[i].y)*(node[j].y-node[i].y)+(node[j].x-node[i].x)*(node[j].x-node[i].x)));
-                if(node[j].x-node[i].x>ans)break;
-            }
-
-        printf("%f\n",ans);
-    }
-
+  int t,n,p;
+  scanf("%d",&t);
+  while(t--)
+  {
+      double s;
+      scanf("%d%d",&n,&p);
+      s=1-pow((100-p)/100.0,n);
+      printf("%f\n",s);
+  }
 }
