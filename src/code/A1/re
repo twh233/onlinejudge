@@ -1,13 +1,8 @@
-//time limit 1000MS
-//memory limit 128M
-
-
 
 #include<stdio.h>
-
 int main(){
     int x,y;
-    printf("%d\n",1/0);
+    int z=1/0;
     while(scanf("%d%d",&x,&y)!=EOF){
         printf("%d\n",x+y);
     }

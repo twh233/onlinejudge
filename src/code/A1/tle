@@ -2,7 +2,7 @@
 
  int main(){
      int x,y;
-     int num = 1e9;
+     int num = 1e9+7;
      while(num--);
      while(scanf("%d%d",&x,&y)!=EOF){
          printf("%d\n",x+y);

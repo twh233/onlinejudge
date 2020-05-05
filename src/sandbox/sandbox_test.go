@@ -10,7 +10,7 @@ import (
 	"testing"
 )
 
-func TestAplusBAC(t *testing.T) {
+func TestAaddBAC(t *testing.T) {
 	currentDir := getCurrentDir()
 	code := base.ReadCodeFromFile(currentDir + "/A1/ac")
 	submit := base.Submit{}
@@ -26,13 +26,13 @@ func TestAplusBAC(t *testing.T) {
 	result,_ := sanbox.Run(submit)
 	fmt.Println("result:", result)
 	if result.Result != base.Accepted {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
 }
 
-func TestAplusBWA(t *testing.T) {
+func TestAaddBWA(t *testing.T) {
 	currentDir := getCurrentDir()
 	code := base.ReadCodeFromFile(currentDir + "/A1/wa")
 
@@ -49,13 +49,13 @@ func TestAplusBWA(t *testing.T) {
 	result,_ := sanbox.Run(submit)
 	fmt.Println("result:", result)
 	if result.Result != base.WrongAnswer {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
 }
 
-func TestAplusBRE(t *testing.T) {
+func TestAaddBRE(t *testing.T) {
 	currentDir := getCurrentDir()
 	code := base.ReadCodeFromFile(currentDir + "/A1/re")
 
@@ -72,13 +72,13 @@ func TestAplusBRE(t *testing.T) {
 	result,_ := sanbox.Run(submit)
 	fmt.Println("result:", result)
 	if result.Result != base.RuntimeError {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
 }
 
-func TestAplusBDG(t *testing.T) {
+func TestAaddBDG(t *testing.T) {
 	currentDir := getCurrentDir()
 	code := base.ReadCodeFromFile(currentDir + "/A1/dg")
 
@@ -95,13 +95,13 @@ func TestAplusBDG(t *testing.T) {
 	result,_ := sanbox.Run(submit)
 	fmt.Println("result:", result)
 	if result.Result != base.Danger {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
 }
 
-func TestAplusBPE(t *testing.T) {
+func TestAaddBPE(t *testing.T) {
 	currentDir := getCurrentDir()
 	code := base.ReadCodeFromFile(currentDir + "/A1/pe")
 
@@ -118,13 +118,13 @@ func TestAplusBPE(t *testing.T) {
 	result,_ := sanbox.Run(submit)
 	fmt.Println("result:", result)
 	if result.Result != base.PresentationError {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
 }
 
-func TestAplusBOLE(t *testing.T) {
+func TestAaddBOLE(t *testing.T) {
 	currentDir := getCurrentDir()
 	code := base.ReadCodeFromFile(currentDir + "/A1/ole")
 
@@ -141,13 +141,13 @@ func TestAplusBOLE(t *testing.T) {
 	result,_ := sanbox.Run(submit)
 	fmt.Println("result:", result)
 	if result.Result != base.OutputLimitExceeded {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
 }
 
-func TestAplusBTLE(t *testing.T) {
+func TestAaddBTLE(t *testing.T) {
 	currentDir := getCurrentDir()
 	code := base.ReadCodeFromFile(currentDir + "/A1/tle")
 
@@ -164,13 +164,13 @@ func TestAplusBTLE(t *testing.T) {
 	result,_ := sanbox.Run(submit)
 	fmt.Println("result:", result)
 	if result.Result != base.TimeLimitExceeded {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
 }
 
-func TestAplusBMLE(t *testing.T) {
+func TestAaddBMLE(t *testing.T) {
 	currentDir := getCurrentDir()
 	code := base.ReadCodeFromFile(currentDir + "/A1/mle")
 
@@ -187,13 +187,13 @@ func TestAplusBMLE(t *testing.T) {
 	result,_ := sanbox.Run(submit)
 	fmt.Println("result:", result)
 	if result.Result != base.MemoryLimitExceeded {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
 }
 
-func TestASubBAC(t *testing.T) {
+func TestAsubBAC(t *testing.T) {
 	currentDir := getCurrentDir()
 	code := base.ReadCodeFromFile(currentDir + "/A2/ac")
 
@@ -209,13 +209,13 @@ func TestASubBAC(t *testing.T) {
 	sanbox.MemoryLimit = 128*1024*1024
 	result,_ := sanbox.Run(submit)
 	if result.Result != base.Accepted {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
 }
 
-func TestASubBOLE(t *testing.T) {
+func TestAsubBOLE(t *testing.T) {
 	currentDir := getCurrentDir()
 	code := base.ReadCodeFromFile(currentDir + "/A2/ole")
 
@@ -231,7 +231,7 @@ func TestASubBOLE(t *testing.T) {
 	sanbox.MemoryLimit = 128*1024*1024
 	result,_ := sanbox.Run(submit)
 	if result.Result != base.OutputLimitExceeded {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
@@ -253,7 +253,7 @@ func TestKMPAC(t *testing.T) {
 	sanbox.MemoryLimit = 128*1024*1024
 	result,_ := sanbox.Run(submit)
 	if result.Result != base.Accepted {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result)
 	}
 	//time.Sleep(time.Second * 3)
@@ -275,7 +275,7 @@ func TestKMPOLE(t *testing.T) {
 	sanbox.MemoryLimit = 128*1024*1024
 	result,_ := sanbox.Run(submit)
 	if result.Result != base.OutputLimitExceeded {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
@@ -297,7 +297,7 @@ func TestKMPOLE(t *testing.T) {
 	sanbox.MemoryLimit = 128*1024*1024
 	result,_ := sanbox.Run(submit)
 	if result.Result != base.TimeLimitExceeded {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
@@ -319,7 +319,7 @@ func TestGreedAC(t *testing.T) {
 	sanbox.MemoryLimit = 128*1024*1024
 	result,_ := sanbox.Run(submit)
 	if result.Result != base.Accepted {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
@@ -341,7 +341,7 @@ func TestGreedCE(t *testing.T) {
 	sanbox.MemoryLimit = 128*1024*1024
 	result,_ := sanbox.Run(submit)
 	if result.Result != base.CompilationError {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
@@ -363,7 +363,7 @@ func TestGreedWA(t *testing.T) {
 	sanbox.MemoryLimit = 128*1024*1024
 	result,_ := sanbox.Run(submit)
 	if result.Result != base.WrongAnswer {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
@@ -385,7 +385,7 @@ func TestGreedTLE(t *testing.T) {
 	sanbox.MemoryLimit = 128*1024*1024
 	result,_ := sanbox.Run(submit)
 	if result.Result != base.TimeLimitExceeded {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
@@ -407,7 +407,7 @@ func TestGreedMLE(t *testing.T) {
 	sanbox.MemoryLimit = 128*1024*1024
 	result,_ := sanbox.Run(submit)
 	if result.Result != base.MemoryLimitExceeded {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
@@ -429,13 +429,13 @@ func TestGreedRE(t *testing.T) {
 	sanbox.MemoryLimit = 128*1024*1024
 	result,_ := sanbox.Run(submit)
 	if result.Result != base.RuntimeError {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
 }
 
-func TestSPJ40(t *testing.T) {
+func TestSPJ1(t *testing.T) {
 	currentDir := getCurrentDir()
 	code := base.ReadCodeFromFile(currentDir + "/SPJ/Score/score40")
 
@@ -452,13 +452,13 @@ func TestSPJ40(t *testing.T) {
 	result,_ := sanbox.Run(submit)
 	fmt.Println("result:",result)
 	if result.Result != base.Score + 40 {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
 }
 
-func TestSPJ100(t *testing.T) {
+func TestSPJ2(t *testing.T) {
 	currentDir := getCurrentDir()
 	code := base.ReadCodeFromFile(currentDir + "/SPJ/Score/score100")
 
@@ -475,7 +475,7 @@ func TestSPJ100(t *testing.T) {
 	result,_ := sanbox.Run(submit)
 	fmt.Println("result:",result)
 	if result.Result != base.Score + 100 {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
@@ -498,7 +498,7 @@ func TestSPJAC(t *testing.T) {
 	result,_ := sanbox.Run(submit)
 	fmt.Println("result:",result)
 	if result.Result != base.Accepted {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
@@ -521,7 +521,7 @@ func TestSPJWA(t *testing.T) {
 	result,_ := sanbox.Run(submit)
 	fmt.Println("result:",result)
 	if result.Result != base.WrongAnswer {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
@@ -544,7 +544,7 @@ func TestFuncAC(t *testing.T) {
 	result,_ := sanbox.Run(submit)
 	fmt.Println("result:",result)
 	if result.Result != base.Accepted {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
@@ -565,9 +565,9 @@ func TestFuncWA(t *testing.T) {
 	sanbox.TimeLimit = 1000
 	sanbox.MemoryLimit = 128*1024*1024
 	result,_ := sanbox.Run(submit)
-	fmt.Println(result)
+	fmt.Println("result is:",result)
 	if result.Result != base.WrongAnswer {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
@@ -590,13 +590,13 @@ func TestRefreeAC(t *testing.T) {
 	result,_ := sanbox.Run(submit)
 	fmt.Println("result:",result)
 	if result.Result != base.Score + 100 {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
 }
 
-func TestRefreeScore100(t *testing.T) {
+func TestRefreeScore2(t *testing.T) {
 	currentDir := getCurrentDir()
 	code := base.ReadCodeFromFile(currentDir + "/Refree/score100")
 
@@ -613,13 +613,13 @@ func TestRefreeScore100(t *testing.T) {
 	result,_ := sanbox.Run(submit)
 	fmt.Println(result)
 	if result.Result < base.Score {
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)
 }
 
-func TestRefreeScore0(t *testing.T) {
+func TestRefreeScore1(t *testing.T) {
 	currentDir := getCurrentDir()
 	code := base.ReadCodeFromFile(currentDir + "/Refree/score0")
 
@@ -636,7 +636,7 @@ func TestRefreeScore0(t *testing.T) {
 	result,_ := sanbox.Run(submit)
 	fmt.Println(result)
 	if result.Result != base.Score{
-		t.Errorf("A plus B is not correct! judger error!")
+		t.Errorf("A add B is not correct! judger error!")
 		fmt.Println("result is:",result.Result)
 	}
 	//time.Sleep(time.Second * 3)

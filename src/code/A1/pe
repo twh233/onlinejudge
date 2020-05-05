@@ -3,12 +3,11 @@
 
 
 
- #include<stdio.h>
-
- int main(){
-     int x,y;
-     while(scanf("%d%d",&x,&y)!=EOF){
-         printf("%d\n\n",x+y);
-     }
-     return 0;
+#include<stdio.h>
+int main(){
+ int x,y;
+ while(scanf("%d%d",&x,&y)!=EOF){
+     printf("%d\n\n",x+y);
  }
+ return 0;
+}

@@ -54,7 +54,6 @@ func (java *JAVA)Run(limit ResourcesLimit) RunResult {
 func RunAdapter(language string, codeDir string, inputDataDir string, exeName string, oldSuffix string, newSuffix string, limit ResourcesLimit) (rr RunResult) {
 	files, err := ioutil.ReadDir(inputDataDir)
 
-	fmt.Println("run RunAdapter Dir :", inputDataDir)
 	if err != nil {
 		fmt.Println("Run ReadDir fail:", err)
 		rr.runResult = base.SystemError
@@ -109,7 +108,6 @@ func RunByOneFile(language string, codeDir string, inputDataDir string, outputDa
 
 	inputFile, err := os.Open(inputDataDir + "/" + f.Name())
 
-	fmt.Println("106: ", inputDataDir + "/" + f.Name())
 	defer inputFile.Close()
 	if err != nil {
 		fmt.Println("Run RunByOneFile inputFile fail:", err)
@@ -121,7 +119,6 @@ func RunByOneFile(language string, codeDir string, inputDataDir string, outputDa
 
 	outputFile, err := os.OpenFile(outputDataDir + "/" + fileName, os.O_CREATE|os.O_RDWR|os.O_TRUNC, 0777)
 	defer outputFile.Close()
-	fmt.Println("116:", outputDataDir + "/" + fileName)
 	if err != nil {
 		fmt.Println("Run RunByOneFile outputFile fail:", err)
 		rr.runResult = base.SystemError

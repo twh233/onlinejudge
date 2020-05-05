@@ -140,16 +140,11 @@ func RunSPJ(language string, spjDir string, inputDir string, outputDir string, u
 		return base.SystemError
 	}
 	cmd.Dir = spjDir
-	fmt.Println(userDir)
 	//fmt.Println(string(base.ReadAll(outputDir)))
-
-	fmt.Println()
-	fmt.Println(string(base.ReadAll(userDir)))
 	_ = cmd.Run()
 
 	result := cmd.ProcessState.Sys().(syscall.WaitStatus).ExitStatus()
 
-	fmt.Println("152:", result)
 	if result == 0 {
 		result = 1
 	}else if result == 4 {
@@ -301,8 +296,6 @@ func CompareOneFile(dir1 string, dir2 string) int64 {
 		str2 = strings.Replace(str2, "\n", "", -1)
 		str1 = strings.TrimSpace(str1)
 		str2 = strings.TrimSpace(str2)
-		fmt.Println(str1)
-		fmt.Println(str2)
 
 		if strings.Compare(str1, str2) != 0 {
 			return base.PresentationError
