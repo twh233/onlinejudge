@@ -1,10 +1,10 @@
 package judge
 
 import (
+	"base"
 	"bufio"
 	"io"
 	"os"
-	"base"
 	"strings"
 )
 

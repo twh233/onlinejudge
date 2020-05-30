@@ -225,7 +225,6 @@ func RunByOneFile(language string, codeDir string, inputDataDir string, outputDa
 		rr.runResult = base.Accepted
 	}
 
-	fmt.Println(rr)
 	return
 }
 

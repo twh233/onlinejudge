@@ -5,16 +5,25 @@ import (
 	"control"
 	"net/http"
 	"sandbox"
+	"github.com/gorilla/mux"
 )
+
+
 
 var jq control.JudgeQueue = make(chan base.Submit, 100)
 
 func main() {
-	http.HandleFunc("/", control.SayHello)
-	http.HandleFunc("/submit", jq.SubmitHandler)
-	http.HandleFunc("/result", control.GetResultHandler)
+	r := mux.NewRouter()
+	r.StrictSlash(true)
+
+	r.HandleFunc("/", control.SayHello)
+	r.HandleFunc("/submit", jq.SubmitHandler)
+	r.HandleFunc("/result", control.GetResultHandler)
+	//r.PathPrefix("/assets").Handler(http.StripPrefix("/assets", http.FileServer(http.Dir(base.PUBLIC_PATH))))
+
 	go judge()
-	http.ListenAndServe(":8888", nil)
+
+	http.ListenAndServe(":8888", r)
 }
 
 func judge(){

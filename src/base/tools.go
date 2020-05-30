@@ -5,11 +5,8 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
-	"log"
 	"os"
 	"path/filepath"
-	"strings"
-	"html/template"
 )
 type tools struct {
 
@@ -71,27 +68,3 @@ func ReadCodeFromFile(dir string) string {
 }
 
 
-func LoadTemplates() interface{} {
-	var Template interface{}
-	var templates[] string
-	fn := func(path string, f os.FileInfo, err error) error {
-		if err != nil {
-			log.Printf("failed, load template:%v", err)
-			return nil
-		}
-
-		if !f.IsDir() && strings.HasSuffix(f.Name(), ".html") {
-			templates = append(templates, path)
-		}
-
-		return nil
-	}
-
-	filepath.Walk("views", fn)
-	if len(templates) > 0 {
-		Template = template.Must(template.ParseFiles(templates...))
-	} else {
-		Template = template.New("")
-	}
-	return Template
-}

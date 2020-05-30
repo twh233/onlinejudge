@@ -1,7 +1,7 @@
-all: build res
+all: compile res
 
 
-build:
+compile:
     go build
 
 run:

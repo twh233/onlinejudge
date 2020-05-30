@@ -63,6 +63,7 @@ func CompileAdapter(language string, codeDir string, fileName string) (cr Compil
 
 	err := cmd.Run()
 	if err != nil {
+		fmt.Println("compile error")
 		//compile error information  --- string(errInf.Bytes())
 		cr.compileResult = base.CompilationError
 		cr.compileErrorInf = string(errInf.Bytes())
