@@ -5,8 +5,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
+	"math/rand"
 	"net/http"
 	"sync"
+	"html/template"
+	"time"
 )
 
 var JudgeResult = make(map[string]base.Result)
@@ -39,4 +42,11 @@ func GetResultHandler(w http.ResponseWriter, r *http.Request) {
 	Mutex.RUnlock()
 	responseResult,_ := json.Marshal(result)
 	_, _ = w.Write(responseResult)
+}
+
+func SayHello(w http.ResponseWriter, r *http.Request) {
+	//n, err := fmt.Fprintln(w, "hello world")
+	t, _ := template.ParseFiles("view/sayhello.html")
+	rand.Seed(time.Now().Unix())
+	t.Execute(w, rand.Intn(10) > 5)
 }
